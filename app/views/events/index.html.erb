@@ -1,6 +1,15 @@
 <h1>Here is a list of all events happening right now!</h1>
 <% @events.each do |event| %>
-    <p>Name: <%= event.name %></p>
-    <p>Date of Event: <%= event.date %></p>
-    <p>Location: <%= event.location %></p>
+<ul>
+    <li>
+        Name: <%= event.name %>
+    </li>
+    <li>
+        Date of Event: <%= event.date %>
+    </li>
+    <li>
+        Location: <%= event.location %>
+    </li>
+    <%= link_to "View Event", event_path(event), method: :get %>
+</ul>
 <% end %>
