@@ -11,3 +11,9 @@
         Location of Event: <%= @event.location %>
     </li>
 </ul>
+<h1>List of Attendees:</h1>
+<% @event.event_attendees.each do |attendee| %>
+        <ul>
+        <li><h2 class = 'font-weight-bolder'><%= attendee.email %></h2></li>
+        </ul>
+<% end %>
