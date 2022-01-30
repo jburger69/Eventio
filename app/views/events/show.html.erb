@@ -1,19 +1,14 @@
-<h1>Here is the Details for the Event:</h1>
+<h1 class="text-center">Here is the details for the event:</h1>
 
-<ul>
-    <li>
-        Name: <%= @event.name %>
-    </li>
-    <li>
-        Date of Event: <%= @event.date %>
-    </li>
-    <li>
-        Location of Event: <%= @event.location %>
-    </li>
-</ul>
-<h1>List of Attendees:</h1>
+<div class="card m-5 mx-auto" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Name: <%= @event.name %></h5>
+        <p class="card-text">Date: <%= @event.date %></p>
+        <p class="card-text">Location: <%= @event.location %></p>
+        <%= link_to "Back to Events", events_path, method: :get, class: 'btn btn-primary btn-sm' %>
+    </div>
+</div>
+<h1 class="text-center">List of attendees for event:</h1>
 <% @event.event_attendees.each do |attendee| %>
-        <ul>
-        <li><h2 class = 'font-weight-bolder'><%= attendee.email %></h2></li>
-        </ul>
+        <p class='font-weight-bolder m-3 text-center'><%= attendee.email %></p>
 <% end %>
