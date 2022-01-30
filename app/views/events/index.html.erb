@@ -1,27 +1,16 @@
-<h1>Here is a list of all events happening right now!</h1>
-<% @events.each do |event| %>
-<ul>
-    <li>
-        Name: <%= event.name %>
-    </li>
-    <li>
-        Date of Event: <%= event.date %>
-    </li>
-    <li>
-        Location: <%= event.location %>
-    </li>
-    
-            <% unless current_user.attended_events.include?(event) %>
-            <%= form_with(model: @event_attendence, url: attendees_path, local: true) do |form| %>
-                <div class="forms mb-4">
-                <%= form.hidden_field :event_id, class: 'form-control', value: event.id %>
-                <div class="actions">
-                    <%= form.submit 'Attend event', class: 'btn btn-primary mt-2' %>
+<h1 class="text-center">Here is a list of all events happening right now!</h1>
+<div class="row">
+        <% @events.each do |event| %>
+            <div class="column">
+                <div class="card m-5" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: <%= event.name %></h5>
+                        <p class="card-text">Date: <%= event.date %></p>
+                        <p class="card-text">Location: <%= event.location %></p>
+                        <%= render "attendee/attendee_form", event: event %>
+                        <%= link_to "View Event", event_path(event), method: :get, class: 'btn btn-primary btn-sm' %>
+                    </div>
                 </div>
-                </div>
-            <% end %>
-            <% end %>
-    
-    <%= link_to "View Event", event_path(event), method: :get %>
-</ul>
-<% end %>
+            </div>
+        <% end %>
+</div>
