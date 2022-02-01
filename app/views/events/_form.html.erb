@@ -1,0 +1,20 @@
+<%= render 'errors'%>
+<%= form_with(model: @event, local: true) do |f|%>
+            <div class="mb-3 text-center" style="margin: 20px;">
+            <%= f.label :name, { class: "form-label"} %>
+            <%= f.text_field :name, { class: "form-control-md", placeholder: "Event Name" } %>
+            </div>
+
+            <div class="mb-3 text-center" style="margin: 20px;">
+            <%= f.label :date, { class: "form-label"} %>
+            <%= f.date_select :date, { class: "form-control-md", placeholder: "Date Format mm/dd/yy" } %>
+            </div>
+
+            <div class="mb-3 text-center" style="margin: 20px;">
+            <%= f.label :location, { class: "form-label"} %>
+            <%= f.text_field :location, { class: "form-control-md", placeholder: "Location" } %>
+            </div>
+            <div class="text-center mb-5">
+            <%= f.submit "Submit", class: "btn btn-primary text-center" %>
+            </div>
+<% end %>
