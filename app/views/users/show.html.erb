@@ -20,7 +20,7 @@
     <% end %>
 </div>
 <div class="row">
-    <h1 class="text-center"> Events you attended in past:</h1>
+    <h1 class="text-center m-5"> Events you attended in past:</h1>
     <%if current_user.attended_events.any?%>
         <% past_events.each do |event| %>
             <div class="column">
@@ -35,11 +35,11 @@
             </div>
         <% end %>
     <% else %>
-        <h2>No past attended events</h2>
+        <h2 class="text-center m-4">No past attended events</h2>
     <% end %>
 </div>
 <div class="row">
-    <h1 class="text-center">Events that are coming up you want to attend:</h1>
+    <h1 class="text-center m-5">Events that are coming up you want to attend:</h1>
     <% if current_user.attended_events.any?  %>
         <% future_events.each do |event| %>
         <div class="column">
@@ -54,6 +54,6 @@
         </div>
         <% end %>
     <% else %>
-        <h2>No Future events you are attending</h2>
+        <h2 class="text-center m-4">No Future events you are attending</h2>
     <% end %>
 </div>
