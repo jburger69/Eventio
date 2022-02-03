@@ -5,6 +5,19 @@
         <h3 class="card-title">Name: <%= @event.name %></h3><br>
         <p class="card-text">Date: <%= @event.date %></p>
         <p class="card-text">Location: <%= @event.location %></p>
+        <% if @ticket_price.any? %>
+            <% @ticket_price.each do |ticket| %>
+                <h4 class='font-weight-bolder m-3 text-center'>Price of Ticket: $<%= ticket.price %></h4>
+            <% end %>
+        <% else %>
+            <h4 class='font-weight-bolder m-3 text-center'>Price of Ticket: Free</h4>
+        <% end %>
+        <%= form_for @order_item, remote: true  do |f|%>
+            <%= f.hidden_field :event_id, :value => @event.id %>
+            <%= f.label :quantity, { class: "form-label"} %>
+            <%= f.number_field :quantity, :value => 1, :min => 1 %>
+            <%= f.submit class: 'btn btn-primary btn-sm'%>
+            <% end %><br>
         <%= link_to "Back to Events", events_path, method: :get, class: 'btn btn-primary btn-sm' %>
     </div>
 </div>
