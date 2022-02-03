@@ -14,6 +14,22 @@
             <%= f.label :location, { class: "form-label"} %>
             <%= f.text_field :location, { class: "form-control-md", placeholder: "Location" } %>
             </div>
+
+            <h1 class="text-center m-5">Make sure to create the tickets as well:</h1>
+
+            <%= f.fields_for :tickets do |f_sub| %>
+                <div class="mb-3 text-center" style="margin: 20px;">
+                <%= f_sub.label :price, { class: "form-label"} %>
+                <%= f_sub.number_field :price, { class: "form-control-md", placeholder: "price ex: $10.00"} %>
+                </div>
+
+                <div class="mb-3 text-center" style="margin: 20px;">
+                <%= f_sub.label :title, { class: "form-label"} %>
+                <%= f_sub.text_field :title, { class: "form-control-md", placeholder: "title"} %>
+                </div>
+            <% end %>
+
+
             <div class="text-center mb-5">
             <%= f.submit "Submit", class: "btn btn-primary text-center" %>
             </div>
