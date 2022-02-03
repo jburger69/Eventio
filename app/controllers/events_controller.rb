@@ -9,10 +9,13 @@ class EventsController < ApplicationController
 
     def show
         @event = Event.find(params[:id])
+        @ticket_price = @event.tickets
+        @order_item = current_order.order_items.new
     end
 
     def new
         @event = Event.new
+        @tickets = @event.tickets.build
     end
 
     def create
@@ -28,6 +31,6 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.require(:event).permit(:name, :location, :date)
+        params.require(:event).permit(:name, :location, :date, tickets_attributes: [:id, :title, :price])
     end
 end
